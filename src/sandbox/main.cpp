@@ -11,13 +11,25 @@
 // | Copyright (C)2022 SoftwareToolsFactory                                  |
 // |                   http://softwaretoolsfactory.com                       |
 // '-------------------------------------------------------------------------'
-#include "stf_logger/stf_logger.h"
+#include "stf_logger/logger.h"
 #include <iostream>
 
 int main( void ) {
-    std::cout << "Test" << std::endl;
+    stf::sysLog.i << " Test operator << ( const char* msg ): " << " Test :)\n";
+    stf::sysLog.i << " Test operator << ( bool val ): " << true << " " << false << "\n";
+    stf::sysLog.i << " Test operator << ( short val ): " << (short) -1234 << "\n";
+    stf::sysLog.i << " Test operator << ( unsigned short val ): " <<  (unsigned short) 12345 << "\n";
+    stf::sysLog.i << " Test operator << ( int val ): " << (int)-123454678 << "\n";
+    stf::sysLog.i << " Test operator << ( unsigned int val ): " << (unsigned int) 123454678 << "\n";
+    stf::sysLog.i << " Test operator << ( long val ): " << (long) 0xFFFFFFFF << "\n";
+    stf::sysLog.i << " Test operator << ( unsigned long val ): " << (unsigned long) 0xFFFFFFFF << "\n";
+    stf::sysLog.i << " Test operator << ( long long val ): " << (long long) 0xFFFFFFFF << "\n";
+    stf::sysLog.i << " Test operator << ( unsigned long long val ): " << (unsigned long long) 0xFFFFFFFF << "\n";
+    stf::sysLog.i << " Test operator << ( float val ): " << (float)1.1234f << "\n";
+    stf::sysLog.i << " Test operator << ( double val ): " << (double)1.12345f << "\n";
+    stf::sysLog.i << " Test operator << ( long double val ): " << (long double)1.12345f << "\n";
+    stf::sysLog.i << " Test operator << ( const void* val ): " << (const void*)0 << "\n";
 
-    stf::stf_print();
     return 0;
 }
 

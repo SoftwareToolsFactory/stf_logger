@@ -11,12 +11,15 @@
 // | Copyright (C)2022 SoftwareToolsFactory                                  |
 // |                   http://softwaretoolsfactory.com                       |
 // '-------------------------------------------------------------------------'
-#include "stf_logger/stf_logger.h"
+#include "stf_logger/logger.h"
 
 #include <iostream>
 
-void stf::stf_print( void ) {
-    std::cout << __FUNCTION__ << std::endl;
+namespace stf {
+
+// Global logger to make usage as simple as cout
+Log    sysLog;
+
 }
 
 // vim: ts=4:sw=4:et:nowrap

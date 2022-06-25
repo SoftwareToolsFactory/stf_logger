@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\stf_logger\stf_logger.h">
+    <ClInclude Include="..\..\include\stf_logger\logger.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

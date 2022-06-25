@@ -4,8 +4,9 @@
 
 ```
 |- bin
-|  |- <platform>
+|  |- <platform>-<configuration>
 |- include
+|  |- stf_logger
 |- src
 |- tmp
 |- vsproj
