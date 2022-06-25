@@ -35,6 +35,10 @@ public:
     Logger& operator << ( double val )              { std::cout << val; return *this; }
     Logger& operator << ( long double val )         { std::cout << val; return *this; }
     Logger& operator << ( const void* val )         { std::cout << val; return *this; }
+
+    // Support for std::endl/std::hex etc
+    Logger& operator<<( std::ostream&(*_Pfn)(std::ostream&) ) { _Pfn(std::cout); return *this; }
+    Logger& operator<<( std::ios_base&(*_Pfn)(std::ios_base&) ) { _Pfn(std::cout); return *this; }
 };
 
 class Log {
