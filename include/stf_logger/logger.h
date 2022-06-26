@@ -18,6 +18,14 @@
 #include <iostream>
 
 namespace stf {
+namespace logutils {
+    enum class Color {
+        eReset,
+        eWhite, eRed, eGreen, eBlue, eCyan, eMagneta, eYellow,
+        eIntenseWhite, eIntenseRed, eIntenseGreen, eIntenseBlue, eIntenseCyan, eIntenseMagneta, eIntenseYellow
+    };
+};  // ns:logutils
+
 
 class Logger {
 public:
@@ -37,12 +45,39 @@ public:
     Logger& operator << ( const void* val )         { std::cout << val; return *this; }
 
     // Support for std::endl/std::hex etc
-    Logger& operator<<( std::ostream&(*_Pfn)(std::ostream&) ) { _Pfn(std::cout); return *this; }
-    Logger& operator<<( std::ios_base&(*_Pfn)(std::ios_base&) ) { _Pfn(std::cout); return *this; }
+    Logger& operator<<( std::ostream&(*fn)(std::ostream&) ) { fn(std::cout); return *this; }
+    Logger& operator<<( std::ios_base&(*fn)(std::ios_base&) ) { fn(std::cout); return *this; }
+
+    // Support own manips
+    Logger& operator<<( Logger&(*fn)(Logger&) ) { fn(*this); return *this; }
+
+    // Color control
+    Logger& setColor( const logutils::Color& color );
 };
+
+// Manips::Colors
+inline Logger& creset( Logger& other ) { return other.setColor( logutils::Color::eReset ); }
+inline Logger& cwhite( Logger& other ) { return other.setColor( logutils::Color::eWhite ); }
+inline Logger& cred( Logger& other ) { return other.setColor( logutils::Color::eRed ); }
+inline Logger& cgreen( Logger& other ) { return other.setColor( logutils::Color::eGreen ); }
+inline Logger& cblue( Logger& other ) { return other.setColor( logutils::Color::eBlue ); }
+inline Logger& ccyan( Logger& other ) { return other.setColor( logutils::Color::eCyan ); }
+inline Logger& cmagneta( Logger& other ) { return other.setColor( logutils::Color::eMagneta ); }
+inline Logger& cyellow( Logger& other ) { return other.setColor( logutils::Color::eYellow ); }
+inline Logger& ciwhite( Logger& other ) { return other.setColor( logutils::Color::eIntenseWhite ); }
+inline Logger& cired( Logger& other ) { return other.setColor( logutils::Color::eIntenseRed ); }
+inline Logger& cigreen( Logger& other ) { return other.setColor( logutils::Color::eIntenseGreen ); }
+inline Logger& ciblue( Logger& other ) { return other.setColor( logutils::Color::eIntenseBlue ); }
+inline Logger& cicyan( Logger& other ) { return other.setColor( logutils::Color::eIntenseCyan ); }
+inline Logger& cimagneta( Logger& other ) { return other.setColor( logutils::Color::eIntenseMagneta ); }
+inline Logger& ciyellow( Logger& other ) { return other.setColor( logutils::Color::eIntenseYellow ); }
+
 
 class Log {
 public:
+    Log();
+    ~Log();
+
     Logger  d;  // Debug
     Logger  i;  // Info
     Logger  w;  // Warning
@@ -50,7 +85,7 @@ public:
 };
 
 // Global logger to make usage as simple as cout
-extern Log    sysLog;
+extern Log    theLog;
 
 }; // ns:stf
 

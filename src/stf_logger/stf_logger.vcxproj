@@ -160,7 +160,7 @@
     <ClInclude Include="..\..\include\stf_logger\logger.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stf_logger.cpp" />
+    <ClCompile Include="logger.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
