@@ -16,6 +16,7 @@
 #include <iostream>
 #include <Windows.h>
 
+#pragma region Windows Color Control
 static HANDLE stdOutputHandle = INVALID_HANDLE_VALUE;
 static WORD   consoleNormalColor = 0;
 
@@ -42,17 +43,30 @@ static void setConsoleColor( WORD color ) {
         return;
     SetConsoleTextAttribute( stdOutputHandle, color );
 }
+#pragma endregion
 
 namespace stf {
 
-Log::Log() {
+// ---------------------------------------------------------------------------
+// Logger
+// ---------------------------------------------------------------------------
+Logger::Logger( const std::string& name ) : _name( name ) {
+}
+
+// ---------------------------------------------------------------------------
+// Log
+// ---------------------------------------------------------------------------
+#pragma region cTor/Dtor
+Log::Log( const std::string& name ) : _name( name ),
+                                       d( name ), i( name ), w( name ), e( name ) {
     initConsoleColor();
 }
 
 Log::~Log() {
 }
+#pragma endregion
 
-    // Color control
+// Color control
 Logger& Logger::setColor( const logutils::Color& color ) {
     switch( color ) {
         case logutils::Color::eReset:   setConsoleNormalColor(); break;
@@ -77,7 +91,7 @@ Logger& Logger::setColor( const logutils::Color& color ) {
 }
 
 // Global logger to make usage as simple as cout
-Log    theLog;
+Log    theLog( "theLog" );
 
 }
 

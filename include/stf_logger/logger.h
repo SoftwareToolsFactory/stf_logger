@@ -26,9 +26,14 @@ namespace logutils {
     };
 };  // ns:logutils
 
-
 class Logger {
 public:
+#pragma region cTor/Dtor
+    Logger( const std::string& name );
+    ~Logger() = default;
+#pragma endregion
+
+#pragma region operator <<
     Logger& operator << ( const char* msg )         { std::cout << msg; return *this; }
     Logger& operator << ( bool val )                { std::cout << val; return *this; }
     Logger& operator << ( short val )               { std::cout << val; return *this; }
@@ -45,16 +50,23 @@ public:
     Logger& operator << ( const void* val )         { std::cout << val; return *this; }
 
     // Support for std::endl/std::hex etc
-    Logger& operator<<( std::ostream&(*fn)(std::ostream&) ) { fn(std::cout); return *this; }
+    Logger& operator<<( std::ostream&(*fn)(std::ostream&) )   { fn(std::cout); return *this; }
     Logger& operator<<( std::ios_base&(*fn)(std::ios_base&) ) { fn(std::cout); return *this; }
 
     // Support own manips
     Logger& operator<<( Logger&(*fn)(Logger&) ) { fn(*this); return *this; }
+#pragma endregion
 
     // Color control
     Logger& setColor( const logutils::Color& color );
+
+    const std::string&  getName( void ) const { return _name; }
+
+protected:
+    const std::string   _name;
 };
 
+#pragma region Manips::Colors
 // Manips::Colors
 inline Logger& creset( Logger& other ) { return other.setColor( logutils::Color::eReset ); }
 inline Logger& cwhite( Logger& other ) { return other.setColor( logutils::Color::eWhite ); }
@@ -71,17 +83,24 @@ inline Logger& ciblue( Logger& other ) { return other.setColor( logutils::Color:
 inline Logger& cicyan( Logger& other ) { return other.setColor( logutils::Color::eIntenseCyan ); }
 inline Logger& cimagneta( Logger& other ) { return other.setColor( logutils::Color::eIntenseMagneta ); }
 inline Logger& ciyellow( Logger& other ) { return other.setColor( logutils::Color::eIntenseYellow ); }
-
+#pragma endregion
 
 class Log {
 public:
-    Log();
+#pragma region cTor/Dtor
+    Log( const std::string& name );
     ~Log();
+#pragma endregion
 
     Logger  d;  // Debug
     Logger  i;  // Info
     Logger  w;  // Warning
     Logger  e;  // Error
+
+    const std::string&  getName( void ) const { return _name; }
+
+protected:
+    const std::string   _name;
 };
 
 // Global logger to make usage as simple as cout

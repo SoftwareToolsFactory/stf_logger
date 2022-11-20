@@ -43,6 +43,8 @@ As this moment, ostring manips, that work on ***<span style="color:blue">std::co
 ***tmp*** - intermediete files, that are created in process of compilation
 
 ### TODO:
+- [ ] Log - store Loggers as shared_ptr: will be needed for registry
+- [X] Log and Logger must have names: will be needed for registry
 - [ ] Log/Logger registry
 - [ ] Log sink support - so we can define for example file, attached per logger
 - [ ] Log builder (Java like) so we can define Log with own loggers, instead of encapsulated ones
