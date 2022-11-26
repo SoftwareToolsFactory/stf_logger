@@ -11,7 +11,7 @@
 // | Copyright (C)2022 SoftwareToolsFactory                                  |
 // |                   http://softwaretoolsfactory.com                       |
 // '-------------------------------------------------------------------------'
-#include "stf_logger/logger.h"
+#include "logger.h"
 #include <iostream>
 
 int main( void ) {
