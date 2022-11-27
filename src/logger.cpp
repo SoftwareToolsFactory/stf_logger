@@ -14,9 +14,11 @@
 #include "logger.h"
 
 #include <iostream>
-#include <Windows.h>
 
 #pragma region Windows Color Control
+#ifdef _WIN32
+#include <Windows.h>
+
 static HANDLE stdOutputHandle = INVALID_HANDLE_VALUE;
 static WORD   consoleNormalColor = 0;
 
@@ -43,6 +45,7 @@ static void setConsoleColor( WORD color ) {
         return;
     SetConsoleTextAttribute( stdOutputHandle, color );
 }
+#endif // def _WIN32
 #pragma endregion
 
 namespace stf {
