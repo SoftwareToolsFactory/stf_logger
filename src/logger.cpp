@@ -60,8 +60,7 @@ Logger::Logger( const std::string& name ) : _name( name ) {
 // Log
 // ---------------------------------------------------------------------------
 #pragma region cTor/Dtor
-Log::Log( const std::string& name ) : _name( name ),
-                                       d( name ), i( name ), w( name ), e( name ) {
+Log::Log( const std::string& name ) : d( name ), i( name ), w( name ), e( name ), _name( name ) {
 //    initConsoleColor();
 }
 
