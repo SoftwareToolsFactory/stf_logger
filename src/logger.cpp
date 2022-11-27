@@ -14,7 +14,6 @@
 #include "logger.h"
 
 #include <iostream>
-
 #pragma region Windows Color Control
 #ifdef _WIN32
 #include <Windows.h>
@@ -61,7 +60,9 @@ Logger::Logger( const std::string& name ) : _name( name ) {
 // ---------------------------------------------------------------------------
 #pragma region cTor/Dtor
 Log::Log( const std::string& name ) : d( name ), i( name ), w( name ), e( name ), _name( name ) {
-//    initConsoleColor();
+#ifdef _WIN32
+    initConsoleColor();
+#endif
 }
 
 Log::~Log() {
@@ -73,23 +74,23 @@ Log::~Log() {
 
 Logger& Logger::setColor( const logutils::Color& color ) {
     switch( color ) {
-        // case logutils::Color::eReset:   setConsoleNormalColor(); break;
+         case logutils::Color::eReset:   setConsoleNormalColor(); break;
 
-        // case logutils::Color::eWhite:   setConsoleColor( FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN ); break;
-        // case logutils::Color::eRed:     setConsoleColor( FOREGROUND_RED ); break;
-        // case logutils::Color::eGreen:   setConsoleColor( FOREGROUND_GREEN ); break;
-        // case logutils::Color::eBlue:    setConsoleColor( FOREGROUND_BLUE ); break;
-        // case logutils::Color::eCyan:    setConsoleColor( FOREGROUND_GREEN | FOREGROUND_BLUE ); break;
-        // case logutils::Color::eMagneta: setConsoleColor( FOREGROUND_BLUE | FOREGROUND_RED ); break;
-        // case logutils::Color::eYellow:  setConsoleColor( FOREGROUND_GREEN | FOREGROUND_RED ); break;
+         case logutils::Color::eWhite:   setConsoleColor( FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN ); break;
+         case logutils::Color::eRed:     setConsoleColor( FOREGROUND_RED ); break;
+         case logutils::Color::eGreen:   setConsoleColor( FOREGROUND_GREEN ); break;
+         case logutils::Color::eBlue:    setConsoleColor( FOREGROUND_BLUE ); break;
+         case logutils::Color::eCyan:    setConsoleColor( FOREGROUND_GREEN | FOREGROUND_BLUE ); break;
+         case logutils::Color::eMagneta: setConsoleColor( FOREGROUND_BLUE | FOREGROUND_RED ); break;
+         case logutils::Color::eYellow:  setConsoleColor( FOREGROUND_GREEN | FOREGROUND_RED ); break;
 
-        // case logutils::Color::eIntenseWhite:   setConsoleColor( FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY ); break;
-        // case logutils::Color::eIntenseRed:     setConsoleColor( FOREGROUND_RED | FOREGROUND_INTENSITY ); break;
-        // case logutils::Color::eIntenseGreen:   setConsoleColor( FOREGROUND_GREEN | FOREGROUND_INTENSITY ); break;
-        // case logutils::Color::eIntenseBlue:    setConsoleColor( FOREGROUND_BLUE | FOREGROUND_INTENSITY ); break;
-        // case logutils::Color::eIntenseCyan:    setConsoleColor( FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY ); break;
-        // case logutils::Color::eIntenseMagneta: setConsoleColor( FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY ); break;
-        // case logutils::Color::eIntenseYellow:  setConsoleColor( FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY ); break;
+         case logutils::Color::eIntenseWhite:   setConsoleColor( FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_GREEN | FOREGROUND_INTENSITY ); break;
+         case logutils::Color::eIntenseRed:     setConsoleColor( FOREGROUND_RED | FOREGROUND_INTENSITY ); break;
+         case logutils::Color::eIntenseGreen:   setConsoleColor( FOREGROUND_GREEN | FOREGROUND_INTENSITY ); break;
+         case logutils::Color::eIntenseBlue:    setConsoleColor( FOREGROUND_BLUE | FOREGROUND_INTENSITY ); break;
+         case logutils::Color::eIntenseCyan:    setConsoleColor( FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY ); break;
+         case logutils::Color::eIntenseMagneta: setConsoleColor( FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY ); break;
+         case logutils::Color::eIntenseYellow:  setConsoleColor( FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY ); break;
     }
     return *this;
 }
