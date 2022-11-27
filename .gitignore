@@ -4,6 +4,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # User-specific files
+predefined_gcc_macros.txt
 *.rsuser
 *.suo
 *.user
@@ -15,6 +16,9 @@
 
 # Mono auto generated files
 mono_crash.*
+
+# VSCode 
+.vscode
 
 # Build results
 [Dd]ebug/
