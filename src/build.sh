@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 CURRENT_DIR=$(basename $PWD)
 if [ "$CURRENT_DIR" != "src" ]; then
     pushd src

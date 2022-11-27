@@ -49,7 +49,16 @@ int main( void ) {
     stf::theLog.i << stf::cimagneta << "stf::logutils::Color::eIntenseMagneta" << stf::creset << std::endl;
     stf::theLog.i << stf::cyellow << "stf::logutils::Color::eYellow" << stf::creset << std::endl;
     stf::theLog.i << stf::ciyellow << "stf::logutils::Color::eIntenseYellow" << stf::creset << std::endl;
-
+    stf::theLog.d << std::endl;
+    stf::theLog.d << "sizeof(bool) = " << stf::cblue << sizeof(bool) << stf::creset << std::endl;
+    stf::theLog.d << "sizeof(char) = " << stf::cblue << sizeof(char) << stf::creset << std::endl;
+    stf::theLog.d << "sizeof(short) = " << stf::cblue << sizeof(short) << stf::creset << std::endl;
+    stf::theLog.d << "sizeof(int) = " << stf::cblue << sizeof(int) << stf::creset << std::endl;
+    stf::theLog.d << "sizeof(long) = " << stf::cblue << sizeof(long) << stf::creset << std::endl;
+    stf::theLog.d << "sizeof(long long) = " << stf::cblue << sizeof(long long) << stf::creset << std::endl;
+    stf::theLog.d << "sizeof(float) = " << stf::cblue << sizeof(float) << stf::creset << std::endl;
+    stf::theLog.d << "sizeof(double) = " << stf::cblue << sizeof(double) << stf::creset << std::endl;
+    stf::theLog.d << "sizeof(void*) = " << stf::cblue << sizeof(void*) << stf::creset << std::endl;
     return 0;
 }
 
