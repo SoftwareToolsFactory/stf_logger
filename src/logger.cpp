@@ -95,7 +95,7 @@ Logger& Logger::setColor( const logutils::Color& color ) {
     return *this;
 }
 
-#elif __linux__
+#elif __linux__ || __CYGWIN__
 
 Logger& Logger::setColor( const logutils::Color& color ) {
     switch( color ) {
