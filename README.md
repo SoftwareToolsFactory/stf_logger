@@ -3,6 +3,23 @@ Simple Logger that looks and feels like cout, supports colors and is simlilar to
 
 ### Platforms
  * Windows
+ * Linux
+ * Cygwin
+
+### Build and Run
+##### Windows
+*.sln file + .vcxproj have everything that is needed to run/debug library
+
+##### Linux & Cygwin
+There are 3 build scripts:
+```
+./build.sh
+./src/build.sh
+./sandbox/build.sh
+```
+**./build.sh** - Calls other **build.sh** located in project directories.<br>
+**src/build.sh** and **sandbox/build.sh** - can also be called directly to just buid single project<br>
+**./run.sh** - this script can run linux and cygwin executable, script contains small pice of code that recognizes on what enviroment it's running.
 
 ### Concept
 1. Simple to use as ***<span style="color:blue">std::cout</span>***
